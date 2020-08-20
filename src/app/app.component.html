@@ -3,13 +3,13 @@
 		{{titolo}}
 	</h1>
 	<mat-form-field appearance="fill">
-		<input matInput type="text" [(ngModel)]="num1">
+		<input id="num1" matInput type="text" [(ngModel)]="num1">
 	</mat-form-field>
 	<br>
 
 	<mat-form-field appearance="fill">
 		<mat-label>Choose an option</mat-label>
-		<select matNativeControl [(ngModel)]="operator">
+		<select id="operator" matNativeControl [(ngModel)]="operator">
 			<option value="1">+</option>
 			<option value="2">-</option>
 			<option value="3">*</option>
@@ -20,13 +20,13 @@
 
 	<br>
 	<mat-form-field appearance="fill">
-		<input matInput type="text" [(ngModel)]="num2">
+		<input id="num2" matInput type="text" [(ngModel)]="num2">
 	</mat-form-field>
 
 	<br>
-	<button mat-button color="accent" (click)="calculate()">Calcola</button>
+	<button id="calculate" mat-button color="accent" (click)="calculate()">Calcola</button>
 	<br>
 	<mat-form-field appearance="fill">
-		<input matInput type="text" [(ngModel)]="result">
+		<input id="result" matInput type="text" [(ngModel)]="result">
 	</mat-form-field>
 </div>
