@@ -3,26 +3,6 @@ import { MathService } from '../services/math.service';
 import { TestBed } from '@angular/core/testing';
 
 describe('SumPipe', () => {
-	let pipe: SumPipe;
-
-	beforeEach(() => {
-		TestBed.configureTestingModule({
-			providers: [
-				MathService,
-				SumPipe
-			]
-		});
-		pipe = TestBed.get(SumPipe);
-	});
-
-	it('create an instance', () => {
-		expect(pipe).toBeTruthy();
-	});
-
-	it('transform should return correct value', () => {
-		expect(pipe.transform(2, 3)).toBe(8);
-	});
-
 	it('transform should return faked correct value from a fake object', () => {
 		const fake: any = { pow: () => 8 };
 		const pipe = new SumPipe(fake as MathService);

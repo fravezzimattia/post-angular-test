@@ -1,5 +1,32 @@
 <div style="text-align:center">
-  <h1>
-    My Test App!
-  </h1>
+	<h1>
+		{{titolo}}
+	</h1>
+	<mat-form-field appearance="fill">
+		<input matInput type="text" [(ngModel)]="num1">
+	</mat-form-field>
+	<br>
+
+	<mat-form-field appearance="fill">
+		<mat-label>Choose an option</mat-label>
+		<select matNativeControl [(ngModel)]="operator">
+			<option value="1">+</option>
+			<option value="2">-</option>
+			<option value="3">*</option>
+			<option value="4">/</option>
+			<option value="5">^</option>
+		</select>
+	</mat-form-field>
+
+	<br>
+	<mat-form-field appearance="fill">
+		<input matInput type="text" [(ngModel)]="num2">
+	</mat-form-field>
+
+	<br>
+	<button mat-button color="accent" (click)="calculate()">Calcola</button>
+	<br>
+	<mat-form-field appearance="fill">
+		<input matInput type="text" [(ngModel)]="result">
+	</mat-form-field>
 </div>
