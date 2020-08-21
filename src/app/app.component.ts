@@ -8,15 +8,14 @@ import { MathService } from './services/math.service';
 })
 export class AppComponent {
 	public titolo = 'La mia calcolatrice';
-
-	constructor(
-		public mathService: MathService
-	) { }
-
 	public num1: number;
 	public num2: number;
 	public result: number;
 	public operator: number;
+
+	constructor(
+		public mathService: MathService
+	) { }
 
 	public calculate() {
 		switch (+this.operator) {

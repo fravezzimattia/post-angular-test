@@ -29,8 +29,7 @@ describe('SumPipe', () => {
 	});
 });
 
-
-class MockMathService extends MathService {
+export class MockMathService extends MathService {
 	pow() {
 		return 25;
 	}
