@@ -1,6 +1,5 @@
 import { SumPipe } from './sum.pipe';
 import { MathService } from '../services/math.service';
-import { TestBed } from '@angular/core/testing';
 
 describe('SumPipe', () => {
 	it('transform should return faked correct value from a fake object', () => {
@@ -29,7 +28,7 @@ describe('SumPipe', () => {
 	});
 });
 
-export class MockMathService extends MathService {
+class MockMathService extends MathService {
 	pow() {
 		return 25;
 	}

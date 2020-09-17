@@ -9,13 +9,14 @@ import { TestBed, async, fakeAsync, tick, ComponentFixture } from '@angular/core
 import { SumPipe } from './pipes/sum.pipe';
 import { AppComponent } from './app.component';
 import { MathService } from './services/math.service';
-import { MockMathService } from './pipes/sum.pipe.spec';
 import { AppRoutingModule } from './app-routing.module';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
 	let nativeElement: any;
 	let component: AppComponent;
 	let fixture: ComponentFixture<AppComponent>;
+	let mathService: any;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -31,14 +32,14 @@ describe('AppComponent', () => {
 			declarations: [
 				AppComponent,
 				SumPipe
+			],
+			providers: [
+				{ provide: MathService, useClass: MockMathService }
 			]
 		}).compileComponents();
 
-		TestBed.overrideComponent(
-			AppComponent,
-			{ set: { providers: [{ provide: MathService, useClass: MockMathService }] } }
-		);
 		fixture = TestBed.createComponent(AppComponent);
+		mathService = TestBed.get(MathService);
 		component = fixture.debugElement.componentInstance;
 		nativeElement = fixture.debugElement.nativeElement;
 		fixture.autoDetectChanges();
@@ -76,24 +77,53 @@ describe('AppComponent', () => {
 		expect(+component.operator).toEqual(1);
 	});
 
-	it('should button pressed', fakeAsync(() => {
+	it('should button pressed', () => {
 		spyOn(fixture.debugElement.componentInstance, 'calculate');
 
 		const calculateButton = nativeElement.querySelector('#calculate')
 		calculateButton.click();
-		tick();
 
 		expect(fixture.debugElement.componentInstance.calculate).toHaveBeenCalled();
-	}));
+	});
 
-	it('should render result', fakeAsync(() => {
+	it('should render result', () => {
 		component.result = 10;
 		fixture.detectChanges();
-		tick();
 
-		const resultInput = nativeElement.querySelector('#result');
-		expect(+resultInput.value).toEqual(10);
-	}));
+		fixture.whenStable()
+			.then(() => {
+				const resultInput = nativeElement.querySelector('#result');
+				expect(+resultInput.value).toEqual(10);
+			});
+	});
 
+	it('should result evaluted', () => {
+		component.num1 = 4;
+		component.num2 = 7;
+		component.operator = 1;
+		component.calculate();
 
+		expect(+component.result).toEqual(11);
+	});
 });
+
+class MockMathService extends MathService {
+	pow() {
+		return 25;
+	}
+	difference() {
+		return 1;
+	}
+	sum() {
+		return 11;
+	}
+	product() {
+		return 9;
+	}
+	quotient() {
+		return 0;
+	}
+	getValueAsObservable() {
+		return of(3)
+	}
+}
