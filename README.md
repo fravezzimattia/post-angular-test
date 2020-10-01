@@ -1,27 +1,22 @@
-# AngularTest
+# Test automatici con Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+## Introduzione
+Adottare una strategia di unit test automatici nello sviluppo software permette di ottenere numerosi vantaggi:
 
-## Development server
+- **Incrementa la qualità del codice**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+  Obbliga lo sviluppatore a dover creare codice facilmente testabile, creando quindi funzioni più flessibili, mantenibili e riusabili.
+- **Aiuta ad inviduare bug prima di andare in produzione e riduce la probabilità di introdurre bug di regressione**
 
-## Code scaffolding
+  Maggiore è il numero di test e di codice coperto da test (code coverage), maggiore è la probabilità che scrivendo nuove funzionalità, queste non creino problemi al codice esistente. Inoltre, generando un test per ogni bug che viene riscontrato si risolve quasi completamente il problema degli errori di regressione.
+  
+- **Permette di modificare più facilmente parti di codice**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  Maggiore è la copertura dei test all'interno del nostro software minore è la paura dello sviluppatore a cambiare codice esistente. Infatti, facendo girare tutti i test, il suo codice verrà automaticamente validato. Senza test ogni minimo cambiamento al codice potrebbe causare una lunga lista di bug.
 
-## Build
+- **Aiuta ad aggiornare librerie e codice di terze parti**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+   	Quando andiamo a utilizzare librerie e codice di terze parti è buona norma creare un wrapper attorno al componente per aiutarne l'utilizzo durante lo sviluppo dell'intera applicazione. Aggiungendo poi una serie di test automatici relativi al wrapper, nel momento in cui andremo ad aggionrare la versione di questa libreria i test ci diranno in modo automatico se la libreria è cambiata e se questi cambiamenti introducono errori.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[CONTINUA LA LETTURA SU UGIdotNet](https://www.ugidotnet.org/articoli/1933/Test-automatici-con-Angular) 
